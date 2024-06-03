@@ -8,7 +8,7 @@
 **Источник**: https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup15/lightning/badoo.pdf
 
 ### WeChat и дата лужа
-Неожидланно WeChat делает Data Lake на Clickhouse в связке с Iceberg.
+Неожиданно WeChat делает Data Lake на Clickhouse в связке с Iceberg.
 
 **Источник:** https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup95/When-ClickHouse-Meets-Iceberg.pdf
 
