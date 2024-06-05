@@ -24,12 +24,12 @@ INSERT INTO tbl1 VALUES (4324182021466249494, 5, 146, 1, 1),(4324182021466249494
 ```sql
 SELECT * FROM tbl1;
 ```
-![img_2.png](img_2.png)
+![img_2.png](screenshots/img_2.png)
 
 ```sql
 SELECT * FROM tbl1 final;
 ```
-![img_4.png](img_4.png)
+![img_4.png](screenshots/img_4.png)
 
 
 **Выбранный движок:** CollapsingMergeTree(Sign)    
@@ -53,7 +53,7 @@ INSERT INTO tbl2 Values(1,1),(1,2),(2,1);
 ```sql
 select * from tbl2;
 ```
-![img_6.png](img_6.png)
+![img_6.png](screenshots/img_6.png)
 
 **Выбранный движок:** SummingMergeTree   
 **Почему**: Выглядит как key-value хранилище, прикольно можно просуммировать значение по ключу, типа аккумуляторы!
@@ -78,12 +78,12 @@ INSERT INTO tbl3 VALUES (23, 'success', '2000', 'Cancelled');
 
 SELECT * from tbl3 WHERE id=23;
 ```
-![img_7.png](img_7.png)
+![img_7.png](screenshots/img_7.png)
 
 ```sql
 SELECT * from tbl3 FINAL WHERE id=23;
 ```
-![img_8.png](img_8.png)
+![img_8.png](screenshots/img_8.png)
 
 **Выбранный движок:** ReplacingMergeTree    
 **Почему**: Можем сохранять последний актуальный `comment` благодаря `ReplacingMergeTree`
@@ -127,14 +127,14 @@ group by CounterID, StartDate;
 ```sql
 INSERT INTO tbl5 VALUES (1,'2019-11-12',1);
 ```
-![img_9.png](img_9.png)
+![img_9.png](screenshots/img_9.png)
 
 ```sql
 SELECT uniqMerge(UserID) AS state 
 FROM tbl5 
 GROUP BY CounterID, StartDate;
 ```
-![img_10.png](img_10.png)
+![img_10.png](screenshots/img_10.png)
 
 **Выбранный движок:** AggregatingMergeTree   
 **Почему**:  Агрегирующие функции мелькнули
@@ -159,13 +159,13 @@ INSERT INTO tbl6 VALUES (23, 'success', '1000', 'Confirmed', -1), (23, 'success'
 
 SELECT * FROM tbl6;
 ```
-![img_11.png](img_11.png)
+![img_11.png](screenshots/img_11.png)
 
 
 ```sql
 SELECT * FROM tbl6 FINAL;
 ```
-![img_12.png](img_12.png)
+![img_12.png](screenshots/img_12.png)
 
 **Выбранный движок:** CollapsingMergeTree(sign)  
 **Почему**:  Sign и FINAL

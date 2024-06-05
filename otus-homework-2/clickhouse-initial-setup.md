@@ -9,7 +9,7 @@
 ### 2, 3. Подгрузить датасет для примера и сделать селект из таблицы. Для проверки отправить скрины работающего инстанса ClickHouse, созданной виртуальной машины и результата запроса select count() from trips where payment_type = 1
 
 Скриншот запущенного инстанса из [docker-compose.yaml](docker-compose.yaml):
-![img.png](img.png)
+![img.png](screenshots/img.png)
 
 Подгрузка датасета из примера:   
 https://clickhouse.com/docs/en/getting-started/example-datasets/nyc-taxi    
@@ -17,13 +17,13 @@ https://clickhouse.com/docs/en/getting-started/example-datasets/nyc-taxi
 
 1. Создание таблички `trips`
 
-![img_1.png](img_1.png )
+![img_1.png](screenshots/img_1.png )
 
 
 2. Вставляем туда данные, используем не все файлы - `{0...2}.gz`. 
 
 
-![img_4.png](img_4.png)
+![img_4.png](screenshots/img_4.png)
 
 
 3. Прогоняем запрос:
@@ -32,7 +32,7 @@ SELECT COUNT() FROM trips WHERE payment_type=1
 ```    
 
 
-![img_5.png](img_5.png)
+![img_5.png](screenshots/img_5.png)
 
 
 ### 4. Провести тестирование производительности и сохранить результаты;
