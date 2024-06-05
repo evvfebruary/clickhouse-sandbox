@@ -1,0 +1,3 @@
+<clickhouse>
+    <http_port>9876</http_port>
+</clickhouse>
