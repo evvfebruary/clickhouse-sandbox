@@ -69,7 +69,7 @@ CREATE TABLE tbl3
     `price` String,
     `comment` String
 )
-ENGINE = <ENGINE>
+ENGINE = ReplacingMergeTree
 PRIMARY KEY (id)
 ORDER BY (id, status);
 
@@ -96,7 +96,7 @@ CREATE TABLE tbl4
 (   CounterID UInt8,
     StartDate Date,
     UserID UInt64
-) ENGINE = <ENGINE>
+) ENGINE = MergeTree
 PARTITION BY toYYYYMM(StartDate) 
 ORDER BY (CounterID, StartDate);
 
