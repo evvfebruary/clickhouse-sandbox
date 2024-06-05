@@ -8,10 +8,11 @@
 
 ### 2, 3. Подгрузить датасет для примера и сделать селект из таблицы. Для проверки отправить скрины работающего инстанса ClickHouse, созданной виртуальной машины и результата запроса select count() from trips where payment_type = 1
 
-Скриншот запущенного инстанса:
+Скриншот запущенного инстанса из [docker-compose.yaml](docker-compose.yaml):
 ![img.png](img.png)
 
-Подгрузка датасета из примера - https://clickhouse.com/docs/en/getting-started/example-datasets/nyc-taxi    
+Подгрузка датасета из примера:   
+https://clickhouse.com/docs/en/getting-started/example-datasets/nyc-taxi    
 
 
 1. Создание таблички `trips`
@@ -79,7 +80,7 @@ https://clickhouse.com/docs/en/operations/settings/settings
 
 ### 6,7.Произвести наиболее оптимальную настройку системы на основании характеристик вашей ОС и провести повторное тестирование. Подготовить отчет касательно прироста/изменения производительности системы на основе проведенных настроек.
 
-Потюнил некоторые параметры в файле `tuning.xml`
+Потюнил некоторые параметры в файле [tuning.xml](clickhouse%2Fconfig%2Ftuning.xml)
 ```yaml
 <clickhouse>
    # Вообще тут вроде дефолтно `the number of physical CPU cores.`, но я уточнил 
