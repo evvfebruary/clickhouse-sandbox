@@ -136,6 +136,7 @@ GROUP BY CounterID, StartDate;
 
 **Выбранный движок:** AggregatingMergeTree   
 **Почему**:  Агрегирующие функции мелькнули
+
 ---
 
 ```sql
@@ -147,7 +148,7 @@ CREATE TABLE tbl6
     `comment` String,
     `sign` Int8
 )
-ENGINE = <ENGINE>
+ENGINE = CollapsingMergeTree(sign)
 PRIMARY KEY (id)
 ORDER BY (id, status);
 
@@ -164,5 +165,8 @@ SELECT * FROM tbl6 FINAL;
 ```
 ![img_12.png](img_12.png)
 
+**Выбранный движок:** CollapsingMergeTree(sign)  
+**Почему**:  Sign и FINAL
 
+---
 
