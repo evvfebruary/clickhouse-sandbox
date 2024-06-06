@@ -10,7 +10,7 @@
 
 ### 1.Создать новую базу данных и перейти в нее.
 
-```clickhouse
+```sql
 -- Создаем новую схему
 CREATE DATABASE IF NOT EXISTS sales_database;
 
@@ -19,7 +19,7 @@ USE sales_database;
 ```
 
 ### 2.Создать таблицу для бизнес-кейса "Меню ресторана" с 5+ полями, наполнить ее данными. Обязательно указывать, где нужно, модификаторы Nullable, LowCardinality и пр. Добавить комментарии.
-```clickhouse
+```sql
 CREATE TABLE restaraunt_menu (
 --     ID записи, лишним не будет
     id UInt8,
@@ -48,18 +48,18 @@ SELECT * FROM restaraunt_menu;
 ![img_2.png](screenshots/img_2.png)
 
 
-```clickhouse
+```sql
 ALTER TABLE restaraunt_menu UPDATE name = 'суп с фрикаделькой' IN PARTITION 'первое' WHERE id = 1;
 ```
 ![img_3.png](screenshots/img_3.png)
 
-```clickhouse
+```sql
 ALTER TABLE restaraunt_menu DELETE WHERE id = 2;
 ```
 ![img_4.png](screenshots/img_4.png)
 
 ### 4.Добавить несколько новых полей, удалить пару старых.
-```clickhouse
+```sql
 
 -- First без особого смысла, просто чтобы запомнить, что так можно
 ALTER TABLE restaraunt_menu ADD COLUMN composition String FIRST;
@@ -79,7 +79,7 @@ SELECT * FROM file('/var/lib/clickhouse/user_files/Menu.csv', CSV);
 ### 6.Материализовать таблицу из п.5 (в виде таблицы)
 Не очень понял, что такое "материализовать таблицу в виде таблицы", возникает ассоциация `MATERIALIZED`, но там вроде либо `VIEW` либо `COLUMN`.   
 Наверно подразумевается что-то такое, могу ошибаться.
-```clickhouse
+```sql
 CREATE TABLE menu
 (
     id UInt32,
@@ -110,7 +110,7 @@ SELECT * FROM menu;
 
 ```
 ### 7.Поработать с партами. Сделать attach/detach/drop. Добавить данных в первоначально созданную таблицу.
-```clickhouse
+```sql
 INSERT INTO restaraunt_menu VALUES ('', 3, 'пюре', 'второе', 120.0, DEFAULT);
 INSERT INTO restaraunt_menu VALUES ('', 4, 'греча', 'второе', 120.0, DEFAULT);
 INSERT INTO restaraunt_menu VALUES ('', 5, 'рис', 'второе', 120.0, DEFAULT);
@@ -119,7 +119,7 @@ SELECT * FROM restaraunt_menu;
 
 ![img_8.png](screenshots/img_8.png)
 
-```clickhouse
+```sql
 -- Делаем DETACH, партиция уходит в /detached
 ALTER TABLE restaraunt_menu DETACH PARTITION 'первое';
 
@@ -127,12 +127,12 @@ SELECT * FROM restaraunt_menu;
 ```
 
 
-```clickhouse
+```sql
 SELECT partition, active FROM system.parts WHERE table='restaraunt_menu';
 ```
 ![img_9.png](screenshots/img_9.png)
 
-```clickhouse
+```sql
 -- Возвращаем обратно
 ALTER TABLE restaraunt_menu ATTACH PARTITION 'первое';
 
@@ -145,7 +145,7 @@ SELECT partition, active, removal_state FROM system.parts WHERE table='restaraun
 ```
 ![img_12.png](screenshots/img_12.png)
 
-```clickhouse
+```sql
 -- Из документации, в отличие от detach:
 --     Deletes the specified partition from the table. 
 --     This query tags the partition as inactive and deletes data completely,
