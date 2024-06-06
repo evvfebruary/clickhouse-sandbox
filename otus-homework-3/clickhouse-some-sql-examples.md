@@ -8,6 +8,9 @@
 Описание/Пошаговая инструкция выполнения домашнего задания:
 Последовательность шагов для выполнения ДЗ:
 
+
+----
+
 ### 1.Создать новую базу данных и перейти в нее.
 
 ```sql
@@ -17,6 +20,8 @@ CREATE DATABASE IF NOT EXISTS sales_database;
 -- Увереннно используем ее
 USE sales_database;
 ```
+
+---
 
 ### 2.Создать таблицу для бизнес-кейса "Меню ресторана" с 5+ полями, наполнить ее данными. Обязательно указывать, где нужно, модификаторы Nullable, LowCardinality и пр. Добавить комментарии.
 ```sql
@@ -34,6 +39,7 @@ CREATE TABLE restaraunt_menu (
 ) ENGINE = MergeTree() ORDER BY (updated_at)
 ```
 
+-----
 
 ### 3.Протестировать CRUD на созданной таблице.
 ```sql
@@ -58,6 +64,9 @@ ALTER TABLE restaraunt_menu DELETE WHERE id = 2;
 ```
 ![img_4.png](screenshots/img_4.png)
 
+----
+
+
 ### 4.Добавить несколько новых полей, удалить пару старых.
 ```sql
 
@@ -70,11 +79,16 @@ SELECT * FROM restaraunt_menu;
 ```
 ![img_6.png](screenshots/img_6.png) 
 
+
+---
+
 ### 5.Заселектить таблицу (любую) из sample dataset - https://clickhouse.com/docs/en/getting-started/example-datasets/menus.
 ```sql
 SELECT * FROM file('/var/lib/clickhouse/user_files/Menu.csv', CSV);
 ```
 ![img_7.png](screenshots/img_7.png)
+
+----
 
 ### 6.Материализовать таблицу из п.5 (в виде таблицы)
 Не очень понял, что такое "материализовать таблицу в виде таблицы", возникает ассоциация `MATERIALIZED`, но там вроде либо `VIEW` либо `COLUMN`.   
@@ -109,6 +123,10 @@ INSERT INTO menu SELECT * FROM file('/var/lib/clickhouse/user_files/Menu.csv', C
 SELECT * FROM menu;
 
 ```
+![img.png](img.png)
+
+----
+
 ### 7.Поработать с партами. Сделать attach/detach/drop. Добавить данных в первоначально созданную таблицу.
 ```sql
 INSERT INTO restaraunt_menu VALUES ('', 3, 'пюре', 'второе', 120.0, DEFAULT);
@@ -157,3 +175,5 @@ SELECT * FROM restaraunt_menu;
 ```
 
 ![img_13.png](screenshots/img_13.png)
+
+----
