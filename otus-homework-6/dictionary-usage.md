@@ -123,4 +123,10 @@ FROM users_expenses
 ORDER BY email;
 ```
 
+Увидел еще модфицированные `dictGet` функции в доке, приятные!
+- https://clickhouse.com/docs/en/sql-reference/functions/ext-dict-functions#dictGet    
+
+- https://clickhouse.com/docs/en/sql-reference/functions/ext-dict-functions#other-functions
+
+
 ![img_1.png](screenshots/img_1.png)
