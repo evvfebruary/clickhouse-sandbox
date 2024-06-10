@@ -15,7 +15,7 @@ INNER JOIN genres g
 ON m.id = g.movie_id;
 ```
 
-![img.png](screenshots/img.png)
+![img_1.png](screenshots/img_1.png)
 
 
 --- 
@@ -64,23 +64,18 @@ CROSS JOIN genres;
 
 **Найти жанры для каждого фильма, НЕ используя INNER JOIN**
 ```sql
-DROP DICTIONARY movie_id_x_genre;
-CREATE DICTIONARY movie_id_x_genre (
-    movie_id UInt32,
-    genre    String
-)
-    PRIMARY KEY movie_id
-    LAYOUT ( FLAT() )
-    SOURCE(CLICKHOUSE(password 'default' db 'imdb' table 'genres'))
-    LIFETIME ( min 0 max 10000 );
-
-SELECT id,
-       name,
-       year,
-       dictGet('movie_id_x_genre', 'genre', id) as genre
-FROM movies
+SELECT m.id,
+       m.name,
+       m.year,
+       g.genre
+FROM movies m
+LEFT JOIN genres g
+ON m.id = g.movie_id
+WHERE genre != ''
 ORDER BY id;
 ```
+
+![img_2.png](screenshots/img_2.png)
 
 ----
 
