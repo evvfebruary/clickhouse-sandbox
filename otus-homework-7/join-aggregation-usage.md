@@ -14,8 +14,7 @@ FROM movies m
 INNER JOIN genres g
 ON m.id = g.movie_id;
 ```
-
-![img_1.png](screenshots/img_1.png)
+![img.png](screenshots/img.png)
 
 
 --- 
@@ -31,8 +30,8 @@ LEFT JOIN genres g
 ON m.id = g.movie_id
 WHERE g.movie_id = 0;
 ```
-![img.png](img.png)
 
+![img_1.png](screenshots/img_1.png)
 
 **[WARNING]**
 
@@ -74,7 +73,9 @@ WHERE genre != ''
 ORDER BY id;
 ```
 
-![img_2.png](screenshots/img_2.png)
+![img_3.png](screenshots/img_3.png)
+
+
 
 ----
 
@@ -102,12 +103,16 @@ WHERE toYear(created_at) = '2024'
 ORDER BY id ASC;
 ```
 
-**EXPLAIN варианта с подзапросом:**
 ![img_5.png](screenshots/img_5.png)
+
+**EXPLAIN варианта с подзапросом:**
+
+![img_6.png](screenshots/img_6.png)
 
 
 **EXPLAIN варианта просто с roles:**
-![img_6.png](screenshots/img_6.png)
+
+![img_7.png](screenshots/img_7.png)
 
 ----
 
@@ -125,4 +130,5 @@ ON m.id = g.movie_id
 ORDER BY id;
 ```
 
-![img_3.png](screenshots/img_3.png)
+![img_8.png](screenshots/img_8.png)
+
