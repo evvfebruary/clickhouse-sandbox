@@ -31,8 +31,7 @@ LEFT JOIN genres g
 ON m.id = g.movie_id
 WHERE g.movie_id = 0;
 ```
-
-![img_1.png](screenshots/img_1.png)
+![img.png](img.png)
 
 
 **[WARNING]**
