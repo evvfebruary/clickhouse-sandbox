@@ -2,6 +2,8 @@
 ### Условие
 Собираюсь развернуть его в "плоский вид", нарисовать одну UDF функцию, чтобы посчитать абстрактную активность пользователя, в рамках которой события `click` будут давать `N` очков, а `view` `M`.
 
+JSON над которым производятся манипуляции - [complicated_json_to_handle.json](examples/complicated_json_to_handle.json)    
+    
 ```sql
 -- Посмотрим, что нас ожидает
 DESCRIBE file('/var/lib/clickhouse/user_files/complicated_json_to_handle.json');
