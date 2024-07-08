@@ -1,6 +1,8 @@
 ### Домашнее задание по RBAC
 #### RBAC
+![img.png](screenshots/part2/img.png)
 
+#### Версия из презентации
 **1) Создать пользователя `jhon` с паролем `qwery`**
 ```sql
 -- Создаем пользователя Jhon, в этот раз просто plaintext
@@ -33,37 +35,67 @@ SET DEFAULT ROLE devs TO jhon;
 -- Проверим, как там наш новый "jhon", ох уж эта опечатка канеш в имени, приходится жмурится.
 SELECT * FROM system.users WHERE name = 'jhon' FORMAT Vertical
 ```
-![img.png](screenshots/img.png)
+![img.png](screenshots/part1/img.png)
 
 
 ```sql
 -- Посмотрим на созданную роль
 SELECT * FROM system.roles WHERE name = 'devs' FORMAT Vertical
 ```
-![img_1.png](screenshots/img_1.png)
+![img_1.png](screenshots/part1/img_1.png)
 
 ```sql
 -- Проверим какие гранты есть у роли
 SELECT * FROM system.grants WHERE role_name = 'devs' FORMAT Vertical;
 ```
-![img_2.png](screenshots/img_2.png)
+![img_2.png](screenshots/part1/img_2.png)
 
 
 **P.S, проверил подключившися как `jhon`, `SELECT` отработал отлично:**
 ```sql
 SELECT currentUser() as whoami;
 ```
-![img_3.png](screenshots/img_3.png)
+![img_3.png](screenshots/part1/img_3.png)
 
 ```sql
 -- Делаем селект от имени jhon
 SELECT * FROM default.users_expenses FORMAT Vertical;
 ```
 
-![img_4.png](screenshots/img_4.png)
+![img_4.png](screenshots/part1/img_4.png)
 
 ```sql
 -- Пробуем вставить значения
 INSERT INTO default.users_expenses VALUES(1243, 'sfa', 199);
 ```
-![img_5.png](screenshots/img_5.png)
+![img_5.png](screenshots/part1/img_5.png)
+
+#### Версия с сайта
+![img_1.png](screenshots/part2/img_1.png)
+
+**Создать пользователя priviliged, приоритизировать его запросы;**
+```sql
+-- Создаем привилегированного пользователя
+CREATE USER privileged;
+ALTER USER privileged SETTINGS priority = 1;
+```
+
+```sql
+-- Проверим его настройки
+SELECT name, value, changed FROM system.settings WHERE name in ('priority') FORMAT Vertical;
+```
+![img_3.png](screenshots/part2/img_3.png)
+
+**Создать пользователя limited, ограничить выделяемые ему ресурсы;**
+```sql
+-- Создание и ограничение пользователе limited
+CREATE USER limited;
+ALTER USER limited SETTINGS max_threads = 2, max_memory_usage = 100000;
+```
+
+```sql
+-- Проверим от лица limited
+SELECT name, value, changed FROM system.settings WHERE name in ('max_threads', 'max_memory_usage') FORMAT Vertical;
+```
+![img_2.png](screenshots/part2/img_2.png)
+
