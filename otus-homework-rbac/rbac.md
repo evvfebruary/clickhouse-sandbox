@@ -1,5 +1,5 @@
-### Домашнее задание по RBAC
-#### RBAC
+## Домашнее задание по RBAC
+## RBAC
 ![img.png](screenshots/part2/img.png)
 
 #### Версия из презентации
@@ -70,10 +70,10 @@ INSERT INTO default.users_expenses VALUES(1243, 'sfa', 199);
 ```
 ![img_5.png](screenshots/part1/img_5.png)
 
-#### Версия с сайта
+## RBAC limited / privileged
 ![img_1.png](screenshots/part2/img_1.png)
 
-**Создать пользователя priviliged, приоритизировать его запросы;**
+**Создать пользователя privileged, приоритизировать его запросы;**
 ```sql
 -- Создаем привилегированного пользователя
 CREATE USER privileged;
