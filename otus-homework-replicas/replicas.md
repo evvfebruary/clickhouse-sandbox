@@ -92,13 +92,13 @@ FROM remote('clickhouse-02,clickhouse-03,clickhouse-04',system.parts)
 FORMAT JSONEachRow;
 ```
 Результат:
-[getMacro__replica_.csv](files%2FgetMacro__replica_.csv)
+[getMacro__replica_.json](files%2FgetMacro__replica_.json)
 
 ```sql
 SELECT * FROM system.replicas FORMAT JSONEachRow;
 ```
 Результат: 
-[system_replicas.csv](files%2Fsystem_replicas.csv)    
+[system_replicas.json](files%2Fsystem_replicas.json)
 
 ### 5. Добавить/выбрать колонку с типом Date в таблице, добавить TTL на таблицу «хранить последние 7 дней».       Предоставить результат запроса «SHOW CREATE TABLE таблица» на проверку.
 ```sql
