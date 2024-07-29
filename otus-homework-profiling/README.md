@@ -114,7 +114,6 @@ SELECT id, date, value FROM profiling.table_with_pk WHERE date > '2024-08-20' FO
 
 ```shell
 # Для запроса с ключом
-
 # SELECT id, date, value FROM profiling.table_with_pk WHERE date > '2024-08-20';
 # По первых попали в PrimaryKey
 <Debug> profiling.table_with_pk (796d2dbf-8c6c-4997-aac3-cc23401a60e1) (SelectExecutor): Key condition: (column 0 in [19956, +Inf))
