@@ -41,7 +41,7 @@ SELECT * FROM test LIMIT 2;
 +--+-----+
 ```
 ### 4.Произвести бекапирование на удаленный ресурс (s3)
-С настроенныем конфигом для утилиты выполнил команду:
+С настроенныем конфигом [config.yaml](clickhouse-backup%2Fconfig.yaml) для утилиты выполнил команду:
 ```shell
 ./clickhouse-backup --config ./config.yaml create_remote
 ```
