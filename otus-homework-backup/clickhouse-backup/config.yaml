@@ -1,0 +1,18 @@
+general:
+  remote_storage: s3
+  compress: true
+  disable_progress_bar: false
+  log_level: info
+
+clickhouse:
+  username: default
+  password: ""
+  host: localhost
+  port: 9000
+
+s3:
+  access_key: LtDOiNXG3c11eORlBuE1
+  secret_key: nW7UkmXHycCeaY9E3W8TAiBekKYCLpjlvardUFb7
+  bucket: backup
+  endpoint: http://minio:9000
+  path: "obj"
