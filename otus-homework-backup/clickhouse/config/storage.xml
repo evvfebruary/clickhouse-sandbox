@@ -1,0 +1,24 @@
+<clickhouse>
+    <storage_configuration>
+        <disks>
+            <minio>
+                <type>s3</type>
+                <endpoint>http://minio:9000/backup/obj</endpoint>
+                <access_key_id>LtDOiNXG3c11eORlBuE1</access_key_id>
+                <secret_access_key>nW7UkmXHycCeaY9E3W8TAiBekKYCLpjlvardUFb7</secret_access_key>
+            </minio>
+        </disks>
+        <policies>
+            <external>
+                <volumes>
+                    <s3>
+                        <disk>minio</disk>
+                    </s3>
+                </volumes>
+            </external>
+        </policies>
+    </storage_configuration>
+    <backups>
+        <allowed_disk>minio</allowed_disk>
+    </backups>
+</clickhouse>
