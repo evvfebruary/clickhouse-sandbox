@@ -1,0 +1,36 @@
+services:
+
+  clickhouse-db:
+    image: clickhouse/clickhouse-server
+    container_name: clickhouse
+    volumes:
+      - ./clickhouse/data:/var/lib/clickhouse
+      - ./clickhouse/logs:/var/log/clickhouse-server
+      - ./clickhouse/config/ports.xml:/etc/clickhouse-server/config.d/ports.xml
+      - ./clickhouse/config/storage.xml:/etc/clickhouse-server/config.d/storage.xml
+      - ./clickhouse-backup:/etc/clickhouse-backup
+    ports:
+      - "9876:9876"
+      - "8123:8123"
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 262144
+        hard: 262144
+    environment:
+      - CLICKHOUSE_DB=default
+      - CLICKHOUSE_USER=default
+      - CLICKHOUSE_PASSWORD=default
+      - CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1
+
+  minio:
+    image: quay.io/minio/minio:RELEASE.2024-08-03T04-33-23Z
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    environment:
+      - MINIO_ROOT_USER=root
+      - MINIO_ROOT_PASSWORD=rootroot
+      - MINIO_SERVER_ACCESS_KEY=minio-access-key
+      - MINIO_SERVER_SECRET_KEY=minio-secret-key
+    command: server --console-address ":9001" /data
