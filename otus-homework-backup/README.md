@@ -46,8 +46,8 @@ SELECT * FROM test LIMIT 2;
 ./clickhouse-backup --config ./config.yaml create_remote
 ```
 
-Получил бекапы в Minio:
-![img.png](img.png)
+Получил бекапы в Minio:   
+![img.png](screenshots/img.png)
 
 ### 5."Испортить" данные в текущем инстансе ClickHouse - удалить таблицу, изменить строку и пр.
 ```sql
