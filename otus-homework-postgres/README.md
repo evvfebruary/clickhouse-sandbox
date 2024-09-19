@@ -57,7 +57,7 @@ SELECT * FROM postgresql('postgres-db:5432',
                                       'myuser',
                                       'mypassword');
 ```
-![img.png](img.png)
+![img.png](screenshots/img.png)
 
 
 ### На стороне ClickHouse создать таблицу для интеграции с движком Postgres для связи с таблицей из PostgreSQL
@@ -71,7 +71,7 @@ CREATE TABLE postgres_synthetic_table
 ENGINE = PostgreSQL('postgres:5432', 'mydatabase', 'synthetic_table', 'myuser', 'mypassword');
 ```
 
-![img_1.png](img_1.png)
+![img_1.png](screenshots/img_1.png)
 
 ### На стороне ClickHouse создать БД для интеграции с движком Postgres для связи с БД из PostgreSQL
 
@@ -94,7 +94,7 @@ USE ch_postgred_db;
 SHOW TABLES;
 ```
 
-![img_2.png](img_2.png)
+![img_2.png](screenshots/img_2.png)
 
 ```sql
 -- Вот что кстати покажет show create
